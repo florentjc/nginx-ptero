@@ -4,7 +4,7 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2025-07-04T14:44:32+02:00",
+    "exported_at": "2025-12-07T02:41:23+01:00",
     "name": "Nginx",
     "author": "florent.jacques63260@gmail.com",
     "description": "Nginx is a web server that can also be used as a reverse proxy, load balancer, mail proxy and HTTP cache. The software was created by Russian developer Igor Sysoev and publicly released in 2004.",
@@ -39,7 +39,7 @@
             "default_value": ".\/start.sh",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "required|string|max:20",
+            "rules": "required|string",
             "field_type": "text"
         },
         {
@@ -50,16 +50,6 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|boolean",
-            "field_type": "text"
-        },
-        {
-            "name": "PHP Version",
-            "description": "Select the correct PHP version! See the tag behind the Docker image.",
-            "env_variable": "PHP_VERSION",
-            "default_value": "",
-            "user_viewable": true,
-            "user_editable": true,
-            "rules": "required|string|max:3",
             "field_type": "text"
         }
     ]

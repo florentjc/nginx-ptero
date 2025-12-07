@@ -1,19 +1,20 @@
 FROM debian:bookworm-slim
 
-ARG PHP_VERSION="8.3"
+ARG PHP_VERSION="8.4"
 
 ENV DEBIAN_FRONTEND noninteractive
 
-# Installation d'Apache et PHP
+# Nginx, PHP and Node JS installation
 RUN apt-get update \
     && apt-get upgrade -y \
-    && apt-get install -y apt-transport-https lsb-release ca-certificates wget apache2 iproute2 \
+    && apt-get install -y apt-transport-https lsb-release ca-certificates wget curl gnupg iproute2 nginx \
     && wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg \
     && echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list \
+    && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
+        nginx \
         php${PHP_VERSION} \
-        libapache2-mod-php${PHP_VERSION} \
         php${PHP_VERSION}-fpm \
         php${PHP_VERSION}-cli \
         php${PHP_VERSION}-common \
@@ -67,7 +68,11 @@ RUN apt-get update \
         php${PHP_VERSION}-maxminddb \
         php${PHP_VERSION}-protobuf \
         php${PHP_VERSION}-OPcache \
+        composer \
+        nodejs \
+    && npm install -g npm@latest \
     && apt-get purge -y --auto-remove \
+    && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 RUN useradd -m -d /home/container/ -s /bin/bash container
@@ -78,6 +83,7 @@ WORKDIR /home/container
 STOPSIGNAL SIGINT
 
 COPY ./entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+COPY ./shell.sh /shell.sh
+RUN chmod +x /entrypoint.sh /shell.sh
 
 CMD ["/entrypoint.sh"]
