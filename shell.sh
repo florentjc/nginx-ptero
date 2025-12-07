@@ -55,6 +55,10 @@ handle_command() {
                     ;;
             esac
             ;;
+        echo)
+            shift
+            echo "$*"
+            ;;
         help)
             echo "Available commands:"
             echo "- cd <dir>      : change directory (safe)"
@@ -63,6 +67,7 @@ handle_command() {
             echo "- php <args>    : run PHP (timeout 30s)"
             echo "- npm <args>    : run NPM (timeout 60s)"
             echo "- composer <args>: run Composer (timeout 120s)"
+            echo "- echo <text>   : print text"
             echo "- help          : this help"
             ;;
         pwd)
