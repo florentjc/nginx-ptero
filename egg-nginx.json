@@ -4,7 +4,7 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2025-12-07T02:41:23+01:00",
+    "exported_at": "2025-12-07T02:49:32+01:00",
     "name": "Nginx",
     "author": "florent.jacques63260@gmail.com",
     "description": "Nginx is a web server that can also be used as a reverse proxy, load balancer, mail proxy and HTTP cache. The software was created by Russian developer Igor Sysoev and publicly released in 2004.",
@@ -36,9 +36,9 @@
             "name": "Startup Command",
             "description": "The startup file for Nginx.",
             "env_variable": "STARTUP_CMD",
-            "default_value": ".\/start.sh",
+            "default_value": "echo \u2713 Services successfully launched",
             "user_viewable": true,
-            "user_editable": true,
+            "user_editable": false,
             "rules": "required|string",
             "field_type": "text"
         },
