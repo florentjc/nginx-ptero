@@ -10,6 +10,7 @@
     "description": "Nginx is a web server that can also be used as a reverse proxy, load balancer, mail proxy and HTTP cache. The software was created by Russian developer Igor Sysoev and publicly released in 2004.",
     "features": null,
     "docker_images": {
+        "PHP 8.5": "florentjqs\/nginx-ptero:php8.5",
         "PHP 8.4": "florentjqs\/nginx-ptero:php8.4",
         "PHP 8.3": "florentjqs\/nginx-ptero:php8.3",
         "PHP 8.2": "florentjqs\/nginx-ptero:php8.2",
